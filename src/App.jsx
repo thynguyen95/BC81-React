@@ -4,6 +4,11 @@ import Carousel from "./Components/Carousel";
 import Header from "./Components/Header";
 import Databinding from "./Databinding/Databinding";
 import Event from "./Event/Event";
+import DemoProps from "./Props/DemoProps";
+import RenderCondition from "./RenderCondition/RenderCondition";
+import DemoChangeCar from "./State/DemoChangeCar";
+import DemoChangeFontSize from "./State/DemoChangeFontSize";
+import DemoState from "./State/DemoState";
 
 function App() {
     return (
@@ -20,7 +25,17 @@ function App() {
 
             {/* <Databinding /> */}
 
-            <Event />
+            {/* <Event /> */}
+
+            {/* <RenderCondition /> */}
+
+            {/* <DemoState /> */}
+
+            {/* <DemoChangeFontSize /> */}
+
+            {/* <DemoChangeCar /> */}
+
+            <DemoProps />
         </>
     );
 }
