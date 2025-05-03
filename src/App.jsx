@@ -4,8 +4,11 @@ import Carousel from "./Components/Carousel";
 import Header from "./Components/Header";
 import Databinding from "./Databinding/Databinding";
 import Event from "./Event/Event";
+import LiftingStateUp from "./LiftingStateUp/LiftingStateUp";
 import DemoProps from "./Props/DemoProps";
+import ShoeShop from "./Props/ShoeShop/ShoeShop";
 import RenderCondition from "./RenderCondition/RenderCondition";
+import RenderWithMap from "./RenderWithMap/RenderWithMap";
 import DemoChangeCar from "./State/DemoChangeCar";
 import DemoChangeFontSize from "./State/DemoChangeFontSize";
 import DemoState from "./State/DemoState";
@@ -17,11 +20,11 @@ function App() {
             <h1 className="text-danger">Hello world !!</h1>
 
             {/* cách sử dụng component */}
-            {/* <Header></Header> */}
-            {/* <Header />
-            <Carousel />
+            {/* <Header></Header>
+            <Header /> */}
+            {/* <Carousel /> */}
 
-            <BaiTap1 /> */}
+            {/* <BaiTap1 /> */}
 
             {/* <Databinding /> */}
 
@@ -35,7 +38,13 @@ function App() {
 
             {/* <DemoChangeCar /> */}
 
-            <DemoProps />
+            {/* <DemoProps /> */}
+
+            {/* <RenderWithMap /> */}
+
+            {/* <ShoeShop /> */}
+
+            <LiftingStateUp />
         </>
     );
 }
