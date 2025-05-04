@@ -1,18 +1,39 @@
 import React from "react";
 
-const Card = () => {
+const Card = (props) => {
+    console.log("props: ", props); // {}
+    const { detail, handleChangeDetail, addProductToCart } = props;
+
     return (
         <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
+            <img
+                src={props.detail.hinhAnh}
+                className="card-img-top"
+                alt="..."
+            />
             <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                </p>
-                <a href="#" className="btn btn-primary">
-                    Go somewhere
+                <h5 className="card-title">{detail.tenSP}</h5>
+                <p className="card-text">{detail.giaBan}</p>
+                <a
+                    href="#"
+                    className="btn btn-primary"
+                    onClick={(e) => {
+                        // chặn sự kiện mặc định của thẻ
+                        e.preventDefault();
+                        handleChangeDetail(detail);
+                    }}
+                >
+                    Xem chi tiết
                 </a>
+
+                <button
+                    className="btn btn-secondary"
+                    onClick={() => {
+                        addProductToCart(detail);
+                    }}
+                >
+                    Thêm vào giỏ hàng
+                </button>
             </div>
         </div>
     );

@@ -17,7 +17,7 @@ function App() {
     return (
         // thẻ rỗng hoặc thẻ Fragment
         <>
-            <h1 className="text-danger">Hello world !!</h1>
+            {/* <h1 className="text-danger">Hello world !!</h1> */}
 
             {/* cách sử dụng component */}
             {/* <Header></Header>
