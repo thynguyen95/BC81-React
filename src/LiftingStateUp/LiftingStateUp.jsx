@@ -94,9 +94,15 @@ const LiftingStateUp = () => {
     const deleteProduct = (id) => {
         console.log("id: ", id);
 
-        // cart = cart.filter((item) => item.maSP !== id);
+        // const cartDel = [
+        //     ...cart.filter((item) => item.maSP !== id),
+        // ];
 
-        const cartDel = [...cart.filter((item) => item.maSP !== id)];
+        const cartDel = [
+            ...cart.filter((item) => {
+                return item.maSP !== id;
+            }),
+        ];
 
         console.log("cartDel: ", cartDel);
 

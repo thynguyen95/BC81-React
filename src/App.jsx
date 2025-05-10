@@ -3,6 +3,8 @@ import BaiTap1 from "./BaiTap1/BaiTap1";
 import Carousel from "./Components/Carousel";
 import Header from "./Components/Header";
 import Databinding from "./Databinding/Databinding";
+import ShoeShopAPI from "./DemoAPI/ShoeShopAPI";
+import DemoForm from "./DemoForm/DemoForm";
 import Event from "./Event/Event";
 import LiftingStateUp from "./LiftingStateUp/LiftingStateUp";
 import DemoProps from "./Props/DemoProps";
@@ -44,7 +46,11 @@ function App() {
 
             {/* <ShoeShop /> */}
 
-            <LiftingStateUp />
+            {/* <LiftingStateUp /> */}
+
+            {/* <ShoeShopAPI /> */}
+
+            <DemoForm />
         </>
     );
 }
