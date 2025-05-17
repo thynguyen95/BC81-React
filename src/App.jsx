@@ -19,6 +19,13 @@ import DemoState from "./State/DemoState";
 import HeaderRouter from "./Components/HeaderRouter";
 import Home from "./pages/Home";
 import About from "./pages/about";
+import HomeMasterPage from "./TemplateLayout/HomeMasterPage";
+import Product from "./pages/Product";
+import AdminMasterPage from "./TemplateLayout/AdminMasterPage";
+import ProductManagement from "./pages/Admin/ProductManagement";
+import MovieManagement from "./pages/Admin/MovieManagement";
+import NotFound from "./pages/NotFound";
+import DetailProduct from "./pages/DetailProduct";
 
 function App() {
     return (
@@ -62,15 +69,41 @@ function App() {
         // </>
 
         <BrowserRouter>
-            <HeaderRouter />
+            {/* <HeaderRouter /> */}
 
             <Routes>
+                {/* Route basic */}
                 {/* cài đặt để mặc định hiển thị page home */}
-                <Route path="" element={<Home />} />
+                {/* <Route path="" element={<Home />} />
                 <Route index element={<Home />} />
 
                 <Route path="home" element={<Home />} />
-                <Route path="about" element={<About />} />
+                <Route path="about" element={<About />} /> */}
+                <Route path="product" element={<Product />} />
+
+                {/* Route nested */}
+                <Route path="/" element={<HomeMasterPage />}>
+                    <Route index element={<Home />} />
+                    <Route path="home" element={<Home />} />
+                    <Route path="about" element={<About />} />
+                    <Route path="detail">
+                        <Route path=":prodId" element={<DetailProduct />} />
+                    </Route>
+                </Route>
+
+                <Route path="/admin" element={<AdminMasterPage />}>
+                    <Route index element={<ProductManagement />} />
+                    <Route
+                        path="product-management"
+                        element={<ProductManagement />}
+                    />
+                    <Route
+                        path="movie-management"
+                        element={<MovieManagement />}
+                    />
+                </Route>
+
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     );

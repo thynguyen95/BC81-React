@@ -33,64 +33,48 @@ const HeaderRouter = () => {
                                 >
                                     Home
                                 </a> */}
-                                <NavLink className="nav-link" to={"/home"}>
+                                <NavLink
+                                    to={"/home"}
+                                    className={(props) =>
+                                        props.isActive
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                    style={({ isActive }) =>
+                                        // const { isActive } = props;
+                                        isActive
+                                            ? { color: "red" }
+                                            : { color: "white" }
+                                    }
+                                >
                                     Home
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to={"/about"}>
+                                <NavLink
+                                    to={"/about"}
+                                    className={(props) =>
+                                        props.isActive
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                >
                                     About
                                 </NavLink>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a
-                                    className="nav-link dropdown-toggle"
-                                    href="#"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    Dropdown
-                                </a>
-                                <ul className="dropdown-menu">
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Action
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Another action
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <hr className="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Something else here
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
                             <li className="nav-item">
-                                <a className="nav-link disabled">Disabled</a>
+                                <NavLink
+                                    to={"/product"}
+                                    className={(props) =>
+                                        props.isActive
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                >
+                                    Product
+                                </NavLink>
                             </li>
                         </ul>
-                        <form className="d-flex" role="search">
-                            <input
-                                className="form-control me-2"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                            />
-                            <button
-                                className="btn btn-outline-success"
-                                type="submit"
-                            >
-                                Search
-                            </button>
-                        </form>
                     </div>
                 </div>
             </nav>

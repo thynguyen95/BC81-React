@@ -32,6 +32,14 @@ const DemoFormik = () => {
         }),
         onSubmit: (values) => {
             console.log("values: ", values);
+
+            // const navigate = useNavigate();
+            // const isValid = false;
+            // if (isValid) {
+            //     navigate('/home');
+            // } else {
+            //     navigate('/forgot-pass');
+            // }
         },
     });
 
