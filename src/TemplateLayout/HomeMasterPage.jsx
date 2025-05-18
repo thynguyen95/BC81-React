@@ -10,22 +10,22 @@ const HomeMasterPage = () => {
             <div className="container">
                 {/* Outlet đại diện cho các cpn khác nhau được load tại block này */}
                 <div className="row justify-content-between">
-                    <div className="col-3 bg-dark h-100 text-white">
+                    {/* <div className="col-3 bg-dark h-100 text-white">
                         <h2>sidebar</h2>
                         <ul>
                             <li>Đời sống</li>
                             <li>Gia dụng</li>
                             <li>Thể thao</li>
                         </ul>
-                    </div>
+                    </div> */}
 
-                    <div className="col-8 bg-info h-100">
+                    <div className="bg-info">
                         <Outlet />
                     </div>
                 </div>
             </div>
 
-            <footer className="bg-black text-center text-white p-5">
+            <footer className="bg-black text-center text-white p-5 mt-5">
                 Footer
             </footer>
         </>

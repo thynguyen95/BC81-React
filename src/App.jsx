@@ -26,6 +26,9 @@ import ProductManagement from "./pages/Admin/ProductManagement";
 import MovieManagement from "./pages/Admin/MovieManagement";
 import NotFound from "./pages/NotFound";
 import DetailProduct from "./pages/DetailProduct";
+import Search from "./pages/Search";
+import AddProduct from "./pages/ProductManagement/AddProduct";
+import EditProduct from "./pages/ProductManagement/EditProduct";
 
 function App() {
     return (
@@ -89,6 +92,8 @@ function App() {
                     <Route path="detail">
                         <Route path=":prodId" element={<DetailProduct />} />
                     </Route>
+
+                    <Route path="search" element={<Search />} />
                 </Route>
 
                 <Route path="/admin" element={<AdminMasterPage />}>
@@ -101,6 +106,9 @@ function App() {
                         path="movie-management"
                         element={<MovieManagement />}
                     />
+
+                    <Route path="add-product" element={<AddProduct />} />
+                    <Route path="edit-product/:id" element={<EditProduct />} />
                 </Route>
 
                 <Route path="*" element={<NotFound />} />

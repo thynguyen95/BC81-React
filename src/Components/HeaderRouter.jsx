@@ -74,6 +74,30 @@ const HeaderRouter = () => {
                                     Product
                                 </NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    to={"/search"}
+                                    className={(props) =>
+                                        props.isActive
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                >
+                                    Search
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    to={"/admin"}
+                                    className={(props) =>
+                                        props.isActive
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                >
+                                    Admin
+                                </NavLink>
+                            </li>
                         </ul>
                     </div>
                 </div>
