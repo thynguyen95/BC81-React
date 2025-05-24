@@ -1,12 +1,39 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useMatch, useNavigate } from "react-router-dom";
 
-const AddProduct = () => {
+const HandleProduct = () => {
     const navigate = useNavigate();
 
-    const formik = useFormik({
+    const match = useMatch("/admin/product/:id");
+    // Nếu match có data({}), nếu ko có data thì là null
+    console.log("match: ", match);
+
+    const isEdit = !!match; // convert object => boolean
+    console.log("isEdit: ", isEdit);
+
+    const getProductByID = () => {
+        axios({
+            url: `https://apitraining.cybersoft.edu.vn/api/ProductApi/get/${match.params.id}`,
+            method: "GET",
+        })
+            .then((response) => {
+                console.log("response: ", response);
+                formikProduct.setValues(response.data);
+            })
+            .catch((error) => {
+                console.log("error: ", error);
+            });
+    };
+
+    useEffect(() => {
+        if (isEdit) {
+            getProductByID();
+        }
+    }, []);
+
+    const formikProduct = useFormik({
         initialValues: {
             id: "",
             name: "",
@@ -19,14 +46,28 @@ const AddProduct = () => {
         onSubmit: (values) => {
             console.log("values: ", values);
 
+            let url =
+                "https://apitraining.cybersoft.edu.vn/api/ProductApi/create";
+            let method = "POST";
+
+            if (isEdit) {
+                url = `https://apitraining.cybersoft.edu.vn/api/ProductApi/update/${values.id}`;
+                method = "PUT";
+            }
+
             axios({
-                url: "https://apitraining.cybersoft.edu.vn/api/ProductApi/create",
-                method: "POST",
+                url: url,
+                method: method,
                 data: values,
             })
                 .then((response) => {
                     console.log("response: ", response);
-                    alert("Thêm sản phẩm thành công !");
+
+                    if (isEdit) {
+                        alert("Bạn đã update thành công !");
+                    } else {
+                        alert("Bạn đã thêm thành công !");
+                    }
 
                     navigate("/admin/product-management");
                 })
@@ -46,10 +87,12 @@ const AddProduct = () => {
 
     return (
         <div>
-            <h1 className="text-center text-danger">Add Product</h1>
+            <h1 className="text-center text-danger">
+                {isEdit ? "Edit Product" : "Add Product"}
+            </h1>
 
             <div className="mt-5">
-                <form onSubmit={formik.handleSubmit}>
+                <form onSubmit={formikProduct.handleSubmit}>
                     <div className="mb-3">
                         <label
                             htmlFor="exampleInputEmail1"
@@ -63,7 +106,9 @@ const AddProduct = () => {
                             className="form-control"
                             id="exampleInputid1"
                             data-type="id"
-                            onChange={formik.handleChange}
+                            value={formikProduct.values.id}
+                            onChange={formikProduct.handleChange}
+                            disabled={isEdit}
                         />
                     </div>
                     <div className="mb-3">
@@ -79,7 +124,8 @@ const AddProduct = () => {
                             className="form-control"
                             id="exampleInputname1"
                             data-type="name"
-                            onChange={formik.handleChange}
+                            value={formikProduct.values.name}
+                            onChange={formikProduct.handleChange}
                         />
                     </div>
                     <div className="mb-3">
@@ -95,7 +141,8 @@ const AddProduct = () => {
                             className="form-control"
                             id="exampleInputphone1"
                             data-type="phone"
-                            onChange={formik.handleChange}
+                            value={formikProduct.values.price}
+                            onChange={formikProduct.handleChange}
                         />
                     </div>
                     <div className="mb-3">
@@ -111,7 +158,8 @@ const AddProduct = () => {
                             className="form-control"
                             id="exampleInputphone1"
                             data-type="phone"
-                            onChange={formik.handleChange}
+                            value={formikProduct.values.img}
+                            onChange={formikProduct.handleChange}
                         />
                     </div>
                     <div className="mb-3">
@@ -127,7 +175,8 @@ const AddProduct = () => {
                             className="form-control"
                             id="exampleInputphone1"
                             data-type="phone"
-                            onChange={formik.handleChange}
+                            value={formikProduct.values.description}
+                            onChange={formikProduct.handleChange}
                         />
                     </div>
 
@@ -143,9 +192,10 @@ const AddProduct = () => {
                             className="form-select"
                             aria-label="Default select example"
                             id="type"
-                            onChange={formik.handleChange}
+                            value={formikProduct.values.type}
+                            onChange={formikProduct.handleChange}
                         >
-                            <option selected>Open this select menu</option>
+                            <option value="">Open this select menu</option>
                             <option value={"SAMSUNG"}>SAMSUNG</option>
                             <option value={"APPLE"}>APPLE</option>
                             <option value={"OPPO"}>OPPO</option>
@@ -160,4 +210,4 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+export default HandleProduct;

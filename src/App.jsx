@@ -29,6 +29,11 @@ import DetailProduct from "./pages/DetailProduct";
 import Search from "./pages/Search";
 import AddProduct from "./pages/ProductManagement/AddProduct";
 import EditProduct from "./pages/ProductManagement/EditProduct";
+import HandleProduct from "./pages/ProductManagement/HandleProduct";
+import { store } from "./Redux/store";
+import ChangeNumberRedux from "./pages/DemoRedux/ChangeNumberRedux";
+import { Provider } from "react-redux";
+import ChangeFontsizeRedux from "./pages/DemoRedux/ChangeFontsizeRedux";
 
 function App() {
     return (
@@ -71,49 +76,67 @@ function App() {
 
         // </>
 
-        <BrowserRouter>
-            {/* <HeaderRouter /> */}
+        <Provider store={store}>
+            <BrowserRouter>
+                {/* <HeaderRouter /> */}
 
-            <Routes>
-                {/* Route basic */}
-                {/* cài đặt để mặc định hiển thị page home */}
-                {/* <Route path="" element={<Home />} />
+                <Routes>
+                    {/* Route basic */}
+                    {/* cài đặt để mặc định hiển thị page home */}
+                    {/* <Route path="" element={<Home />} />
                 <Route index element={<Home />} />
 
                 <Route path="home" element={<Home />} />
                 <Route path="about" element={<About />} /> */}
-                <Route path="product" element={<Product />} />
+                    <Route path="product" element={<Product />} />
 
-                {/* Route nested */}
-                <Route path="/" element={<HomeMasterPage />}>
-                    <Route index element={<Home />} />
-                    <Route path="home" element={<Home />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="detail">
-                        <Route path=":prodId" element={<DetailProduct />} />
+                    {/* Route nested */}
+                    <Route path="/" element={<HomeMasterPage />}>
+                        <Route index element={<Home />} />
+                        <Route path="home" element={<Home />} />
+                        <Route path="about" element={<About />} />
+                        <Route path="detail">
+                            <Route path=":prodId" element={<DetailProduct />} />
+                        </Route>
+
+                        <Route path="search" element={<Search />} />
+
+                        <Route
+                            path="change-number-redux"
+                            element={<ChangeNumberRedux />}
+                        />
+
+                        <Route
+                            path="change-fontsize-redux"
+                            element={<ChangeFontsizeRedux />}
+                        />
                     </Route>
 
-                    <Route path="search" element={<Search />} />
-                </Route>
+                    <Route path="/admin" element={<AdminMasterPage />}>
+                        <Route index element={<ProductManagement />} />
+                        <Route
+                            path="product-management"
+                            element={<ProductManagement />}
+                        />
+                        <Route
+                            path="movie-management"
+                            element={<MovieManagement />}
+                        />
 
-                <Route path="/admin" element={<AdminMasterPage />}>
-                    <Route index element={<ProductManagement />} />
-                    <Route
-                        path="product-management"
-                        element={<ProductManagement />}
-                    />
-                    <Route
-                        path="movie-management"
-                        element={<MovieManagement />}
-                    />
+                        <Route path="add-product" element={<AddProduct />} />
+                        <Route
+                            path="edit-product/:id"
+                            element={<EditProduct />}
+                        />
 
-                    <Route path="add-product" element={<AddProduct />} />
-                    <Route path="edit-product/:id" element={<EditProduct />} />
-                </Route>
+                        <Route path="product" element={<HandleProduct />} />
+                        <Route path="product/:id" element={<HandleProduct />} />
+                    </Route>
 
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </BrowserRouter>
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </BrowserRouter>
+        </Provider>
     );
 }
 

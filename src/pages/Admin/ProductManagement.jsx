@@ -41,6 +41,10 @@ const ProductManagement = () => {
                 Add new product
             </NavLink>
 
+            <NavLink to={"/admin/product"} className="btn btn-danger">
+                Add new product with useMatch
+            </NavLink>
+
             {/* form tìm kiếm */}
             {/* Phân tích tính năng search: 
             B1: lấy được value từ input 
@@ -115,6 +119,12 @@ const ProductManagement = () => {
                                             className="btn btn-success"
                                         >
                                             Edit
+                                        </NavLink>
+                                        <NavLink
+                                            to={`/admin/product/${item.id}`}
+                                            className="btn btn-success"
+                                        >
+                                            Edit with useMatch
                                         </NavLink>
                                         <button className="btn btn-danger">
                                             Delete

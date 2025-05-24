@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditProduct = () => {
     const param = useParams();
     console.log("param: ", param);
+
+    const navigate = useNavigate();
 
     const getProductByID = () => {
         axios({
@@ -39,12 +41,16 @@ const EditProduct = () => {
             console.log("values: ", values);
 
             axios({
-                url: "https://apitraining.cybersoft.edu.vn/api/ProductApi/create",
-                method: "POST",
+                url: `https://apitraining.cybersoft.edu.vn/api/ProductApi/update/${values.id}`,
+                method: "PUT",
                 data: values,
             })
                 .then((response) => {
                     console.log("response: ", response);
+
+                    alert("Bạn đã update thành công !");
+
+                    navigate("/admin/product-management");
                 })
                 .catch((error) => {
                     console.log("error: ", error);
@@ -167,10 +173,10 @@ const EditProduct = () => {
                             value={formikEdit.values.type}
                             onChange={formikEdit.handleChange}
                         >
-                            <option selected>Open this select menu</option>
-                            <option value={"Samsung"}>Samsung</option>
-                            <option value={"Apple"}>Apple</option>
-                            <option value={"Oppo"}>Oppo</option>
+                            <option value="">Open this select menu</option>
+                            <option value={"SAMSUNG"}>SAMSUNG</option>
+                            <option value={"APPLE"}>APPLE</option>
+                            <option value={"OPPO"}>OPPO</option>
                         </select>
                     </div>
                     <button type="submit" className="btn btn-primary">

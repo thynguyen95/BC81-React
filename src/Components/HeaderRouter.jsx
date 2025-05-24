@@ -98,6 +98,43 @@ const HeaderRouter = () => {
                                     Admin
                                 </NavLink>
                             </li>
+                            <li className="nav-item dropdown">
+                                <a
+                                    className="nav-link dropdown-toggle"
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Redux
+                                </a>
+                                <ul className="dropdown-menu">
+                                    <li>
+                                        <NavLink
+                                            className="dropdown-item"
+                                            to={"/change-number-redux"}
+                                        >
+                                            Change number
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            className="dropdown-item"
+                                            to={"/change-fontsize-redux"}
+                                        >
+                                            Change fontsize
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <hr className="dropdown-divider" />
+                                    </li>
+                                    <li>
+                                        <a className="dropdown-item" href="#">
+                                            Something else here
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
