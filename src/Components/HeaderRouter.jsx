@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const HeaderRouter = () => {
+    const cart = useSelector((state) => state.cartSliceReducer.cart);
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-light">
@@ -134,6 +137,18 @@ const HeaderRouter = () => {
                                         </a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    to={"/cart"}
+                                    className={(props) =>
+                                        props.isActive
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                >
+                                    Cart ({cart.length})
+                                </NavLink>
                             </li>
                         </ul>
                     </div>

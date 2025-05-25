@@ -34,6 +34,7 @@ import { store } from "./Redux/store";
 import ChangeNumberRedux from "./pages/DemoRedux/ChangeNumberRedux";
 import { Provider } from "react-redux";
 import ChangeFontsizeRedux from "./pages/DemoRedux/ChangeFontsizeRedux";
+import Cart from "./pages/Cart";
 
 function App() {
     return (
@@ -110,6 +111,8 @@ function App() {
                             path="change-fontsize-redux"
                             element={<ChangeFontsizeRedux />}
                         />
+
+                        <Route path="cart" element={<Cart />} />
                     </Route>
 
                     <Route path="/admin" element={<AdminMasterPage />}>
