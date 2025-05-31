@@ -35,6 +35,9 @@ import ChangeNumberRedux from "./pages/DemoRedux/ChangeNumberRedux";
 import { Provider } from "react-redux";
 import ChangeFontsizeRedux from "./pages/DemoRedux/ChangeFontsizeRedux";
 import Cart from "./pages/Cart";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 
 function App() {
     return (
@@ -113,6 +116,12 @@ function App() {
                         />
 
                         <Route path="cart" element={<Cart />} />
+
+                        <Route path="register" element={<Register />} />
+
+                        <Route path="login" element={<Login />} />
+
+                        <Route path="profile" element={<Profile />} />
                     </Route>
 
                     <Route path="/admin" element={<AdminMasterPage />}>

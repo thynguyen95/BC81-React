@@ -2,6 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { numberReducer } from "./Reducers/numberReducer";
 import { fontSizeReducer } from "./Reducers/fontSizeReducer";
 import cartReducer from "./Reducers/cartReducer";
+import userReducer from "./Reducers/userReducer";
+import productReducer from "./Reducers/productReducer";
 
 const cartDefault = [
     {
@@ -72,6 +74,8 @@ export const store = configureStore({
             return [...cart];
         },
         cartSliceReducer: cartReducer,
+        userReducer: userReducer,
+        productReducer,
     },
 });
 

@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProductAction } from "../Redux/Reducers/cartReducer";
+import { http } from "../services/configUrl";
+import { getProductActionThunk } from "../Redux/Reducers/productReducer";
 
 // Bài tập giỏ hàng
 /*
@@ -13,23 +15,37 @@ import { addProductAction } from "../Redux/Reducers/cartReducer";
 */
 
 const Home = () => {
-    const [arrProduct, setArrProduct] = useState([]);
+    // const [arrProduct, setArrProduct] = useState([]);
+
+    const arrProduct = useSelector((state) => state.productReducer.arrProduct);
 
     const dispatch = useDispatch();
 
     const getAllProduct = () => {
-        axios({
-            url: "https://apistore.cybersoft.edu.vn/api/Product",
-            method: "GET",
-        })
-            .then((response) => {
-                console.log("response: ", response);
+        // axios({
+        //     url: "https://apistore.cybersoft.edu.vn/api/Product",
+        //     method: "GET",
+        // })
+        //     .then((response) => {
+        //         console.log("response: ", response);
 
-                setArrProduct(response.data.content);
-            })
-            .catch((err) => {
-                console.log("err: ", err);
-            });
+        //         setArrProduct(response.data.content);
+        //     })
+        //     .catch((err) => {
+        //         console.log("err: ", err);
+        //     });
+
+        // http.get("/api/Product")
+        //     .then((response) => {
+        //         console.log("response: ", response);
+
+        //         setArrProduct(response.data.content);
+        //     })
+        //     .catch((err) => {
+        //         console.log("err: ", err);
+        //     });
+        const actionThunk = getProductActionThunk();
+        dispatch(actionThunk);
     };
 
     useEffect(() => {

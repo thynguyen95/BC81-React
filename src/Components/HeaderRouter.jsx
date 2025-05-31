@@ -4,6 +4,45 @@ import { NavLink } from "react-router-dom";
 
 const HeaderRouter = () => {
     const cart = useSelector((state) => state.cartSliceReducer.cart);
+    const userLogin = useSelector((state) => state.userReducer.userLogin);
+
+    const renderLogin = () => {
+        // falsy, truthy
+        if (userLogin) {
+            return (
+                <NavLink
+                    to={"/profile"}
+                    className={(props) =>
+                        props.isActive ? "nav-link active" : "nav-link"
+                    }
+                >
+                    Hello {userLogin.email}
+                </NavLink>
+            );
+        }
+
+        return (
+            <div className="d-flex align-items-center">
+                <NavLink
+                    to={"/register"}
+                    className={(props) =>
+                        props.isActive ? "nav-link active" : "nav-link"
+                    }
+                >
+                    Register
+                </NavLink>
+                /
+                <NavLink
+                    to={"/login"}
+                    className={(props) =>
+                        props.isActive ? "nav-link active" : "nav-link"
+                    }
+                >
+                    Login
+                </NavLink>
+            </div>
+        );
+    };
 
     return (
         <div>
@@ -150,6 +189,7 @@ const HeaderRouter = () => {
                                     Cart ({cart.length})
                                 </NavLink>
                             </li>
+                            <li className="nav-item">{renderLogin()}</li>
                         </ul>
                     </div>
                 </div>
