@@ -189,6 +189,18 @@ const HeaderRouter = () => {
                                     Cart ({cart.length})
                                 </NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    to={"/react-query"}
+                                    className={(props) =>
+                                        props.isActive
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                >
+                                    React Query
+                                </NavLink>
+                            </li>
                             <li className="nav-item">{renderLogin()}</li>
                         </ul>
                     </div>

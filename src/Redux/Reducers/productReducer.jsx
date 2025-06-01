@@ -4,6 +4,7 @@ import { http } from "../../services/configUrl";
 
 const initialState = {
     arrProduct: [],
+    detailProduct: {},
 };
 
 const productReducer = createSlice({
@@ -13,28 +14,13 @@ const productReducer = createSlice({
         setArrProductAction: (state, action) => {
             state.arrProduct = action.payload;
         },
+        setDetailProductAction: (state, action) => {
+            state.detailProduct = action.payload;
+        },
     },
 });
 
-export const { setArrProductAction } = productReducer.actions;
+export const { setArrProductAction, setDetailProductAction } =
+    productReducer.actions;
 
 export default productReducer.reducer;
-
-//action
-export const getProductActionThunk = () => {
-    return (dispatch) => {
-        http.get("/api/Product")
-            .then((response) => {
-                console.log("response: ", response);
-
-                // tạo action payload
-                const actionPayload = setArrProductAction(
-                    response.data.content
-                );
-                dispatch(actionPayload);
-            })
-            .catch((err) => {
-                console.log("err: ", err);
-            });
-    };
-};

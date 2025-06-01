@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductAction } from "../Redux/Reducers/cartReducer";
 import { http } from "../services/configUrl";
-import { getProductActionThunk } from "../Redux/Reducers/productReducer";
+import { getProductActionThunk } from "../Redux/Actions/productActions";
+import { NavLink } from "react-router-dom";
 
 // Bài tập giỏ hàng
 /*
@@ -108,6 +109,12 @@ const Home = () => {
                                     >
                                         Add to cart
                                     </button>
+                                    <NavLink
+                                        className="btn btn-success"
+                                        to={`/detail/${item.id}`}
+                                    >
+                                        Read more
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>

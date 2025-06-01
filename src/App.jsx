@@ -38,6 +38,14 @@ import Cart from "./pages/Cart";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import Spinner from "./Components/Spinner";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import RQMasterPage from "./TemplateLayout/RQMastePage";
+import ShoeShopRQ from "./pages/ReactQueryDemo/ShoeShopRQ";
+
+// tương tự store của redux
+const queryClient = new QueryClient();
 
 function App() {
     return (
@@ -81,73 +89,93 @@ function App() {
         // </>
 
         <Provider store={store}>
-            <BrowserRouter>
-                {/* <HeaderRouter /> */}
+            <QueryClientProvider client={queryClient}>
+                <ReactQueryDevtools initialIsOpen={true} />
 
-                <Routes>
-                    {/* Route basic */}
-                    {/* cài đặt để mặc định hiển thị page home */}
-                    {/* <Route path="" element={<Home />} />
+                <Spinner />
+
+                <BrowserRouter>
+                    {/* <HeaderRouter /> */}
+
+                    <Routes>
+                        {/* Route basic */}
+                        {/* cài đặt để mặc định hiển thị page home */}
+                        {/* <Route path="" element={<Home />} />
                 <Route index element={<Home />} />
 
                 <Route path="home" element={<Home />} />
                 <Route path="about" element={<About />} /> */}
-                    <Route path="product" element={<Product />} />
+                        <Route path="product" element={<Product />} />
 
-                    {/* Route nested */}
-                    <Route path="/" element={<HomeMasterPage />}>
-                        <Route index element={<Home />} />
-                        <Route path="home" element={<Home />} />
-                        <Route path="about" element={<About />} />
-                        <Route path="detail">
-                            <Route path=":prodId" element={<DetailProduct />} />
+                        {/* Route nested */}
+                        <Route path="/" element={<HomeMasterPage />}>
+                            <Route index element={<Home />} />
+                            <Route path="home" element={<Home />} />
+                            <Route path="about" element={<About />} />
+                            <Route path="detail">
+                                <Route
+                                    path=":prodId"
+                                    element={<DetailProduct />}
+                                />
+                            </Route>
+
+                            <Route path="search" element={<Search />} />
+
+                            <Route
+                                path="change-number-redux"
+                                element={<ChangeNumberRedux />}
+                            />
+
+                            <Route
+                                path="change-fontsize-redux"
+                                element={<ChangeFontsizeRedux />}
+                            />
+
+                            <Route path="cart" element={<Cart />} />
+
+                            <Route path="register" element={<Register />} />
+
+                            <Route path="login" element={<Login />} />
+
+                            <Route path="profile" element={<Profile />} />
                         </Route>
 
-                        <Route path="search" element={<Search />} />
+                        <Route path="/admin" element={<AdminMasterPage />}>
+                            <Route index element={<ProductManagement />} />
+                            <Route
+                                path="product-management"
+                                element={<ProductManagement />}
+                            />
+                            <Route
+                                path="movie-management"
+                                element={<MovieManagement />}
+                            />
 
-                        <Route
-                            path="change-number-redux"
-                            element={<ChangeNumberRedux />}
-                        />
+                            <Route
+                                path="add-product"
+                                element={<AddProduct />}
+                            />
+                            <Route
+                                path="edit-product/:id"
+                                element={<EditProduct />}
+                            />
 
-                        <Route
-                            path="change-fontsize-redux"
-                            element={<ChangeFontsizeRedux />}
-                        />
+                            <Route path="product" element={<HandleProduct />} />
+                            <Route
+                                path="product/:id"
+                                element={<HandleProduct />}
+                            />
+                        </Route>
 
-                        <Route path="cart" element={<Cart />} />
+                        <Route path="react-query" element={<RQMasterPage />}>
+                            <Route index element={<ShoeShopRQ />} />
+                            <Route path="use-query" element={<ShoeShopRQ />} />
+                        </Route>
 
-                        <Route path="register" element={<Register />} />
-
-                        <Route path="login" element={<Login />} />
-
-                        <Route path="profile" element={<Profile />} />
-                    </Route>
-
-                    <Route path="/admin" element={<AdminMasterPage />}>
-                        <Route index element={<ProductManagement />} />
-                        <Route
-                            path="product-management"
-                            element={<ProductManagement />}
-                        />
-                        <Route
-                            path="movie-management"
-                            element={<MovieManagement />}
-                        />
-
-                        <Route path="add-product" element={<AddProduct />} />
-                        <Route
-                            path="edit-product/:id"
-                            element={<EditProduct />}
-                        />
-
-                        <Route path="product" element={<HandleProduct />} />
-                        <Route path="product/:id" element={<HandleProduct />} />
-                    </Route>
-
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-            </BrowserRouter>
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </BrowserRouter>
+            </QueryClientProvider>
         </Provider>
     );
 }

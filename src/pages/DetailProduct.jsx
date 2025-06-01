@@ -2,10 +2,16 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
+import { getProductDetailByIDActionThunk } from "../Redux/Actions/productActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const DetailProduct = () => {
-    const [detail, setDetail] = useState({});
+    // const [detail, setDetail] = useState({});
     const [transform, setTransform] = useState("rotate(0deg)");
+
+    const detail = useSelector((state) => state.productReducer.detailProduct);
+
+    const dispatch = useDispatch();
 
     // global state: bất kỳ cpn nào cũng có thể lấy được
     // prodId: tên key trong param giống với tên path được đặt ở route
@@ -13,17 +19,21 @@ const DetailProduct = () => {
     console.log("param: ", param);
 
     const getProductByID = () => {
-        axios({
-            url: `https://apistore.cybersoft.edu.vn/api/Product/getbyid?id=${param.prodId}`,
-            method: "GET",
-        })
-            .then((response) => {
-                console.log("response: ", response.data.content);
-                setDetail(response.data.content);
-            })
-            .catch((error) => {
-                console.log("error: ", error);
-            });
+        // axios({
+        //     url: `https://apistore.cybersoft.edu.vn/api/Product/getbyid?id=${param.prodId}`,
+        //     method: "GET",
+        // })
+        //     .then((response) => {
+        //         console.log("response: ", response.data.content);
+        //         setDetail(response.data.content);
+        //     })
+        //     .catch((error) => {
+        //         console.log("error: ", error);
+        //     });
+
+        // tạo actionThunk (1 hàm có tham số là dispatch )
+        const actionThunk = getProductDetailByIDActionThunk(param.prodId);
+        dispatch(actionThunk);
     };
 
     useEffect(() => {

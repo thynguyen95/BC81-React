@@ -42,7 +42,9 @@ export const loginActionAsync = (data) => {
         try {
             //thành công
 
-            const res = await http.post("/api/Users/signin", data);
+            const res = await http.post("/api/Users/signin", data, {
+                skipLoading: true, // key tùy chỉnh để không bật loading
+            });
             console.log("res: ", res);
 
             // lưu data api trả về vào localStorage
