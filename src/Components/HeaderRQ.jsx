@@ -27,20 +27,26 @@ const HeaderRQ = () => {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <NavLink
-                                    to={"/use-query"}
+                                    to={"/react-query/use-query"}
                                     className={(props) =>
                                         props.isActive
                                             ? "nav-link active"
                                             : "nav-link"
                                     }
-                                    style={({ isActive }) =>
-                                        // const { isActive } = props;
-                                        isActive
-                                            ? { color: "red" }
-                                            : { color: "white" }
-                                    }
                                 >
                                     useQuery
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    to={"/react-query/user-management"}
+                                    className={(props) =>
+                                        props.isActive
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                >
+                                    user Managemen
                                 </NavLink>
                             </li>
                         </ul>

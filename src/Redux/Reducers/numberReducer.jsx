@@ -1,5 +1,5 @@
 export const numberReducer = (number = 200, action) => {
-    console.log("action: ", action);
+    // console.log("action: ", action);
 
     // xử lý logic
 

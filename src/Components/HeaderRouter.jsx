@@ -201,6 +201,43 @@ const HeaderRouter = () => {
                                     React Query
                                 </NavLink>
                             </li>
+                            <li className="nav-item dropdown">
+                                <a
+                                    className="nav-link dropdown-toggle"
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Hook tối ưu render
+                                </a>
+                                <ul className="dropdown-menu">
+                                    <li>
+                                        <NavLink
+                                            className="dropdown-item"
+                                            to={"/useRef"}
+                                        >
+                                            useRef
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            className="dropdown-item"
+                                            to={"/useMemo"}
+                                        >
+                                            useMemo
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            className="dropdown-item"
+                                            to={"/useCallBack"}
+                                        >
+                                            useCallBack
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            </li>
                             <li className="nav-item">{renderLogin()}</li>
                         </ul>
                     </div>
