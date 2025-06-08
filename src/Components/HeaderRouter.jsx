@@ -238,6 +238,18 @@ const HeaderRouter = () => {
                                     </li>
                                 </ul>
                             </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    to={"/custom-hook"}
+                                    className={(props) =>
+                                        props.isActive
+                                            ? "nav-link active"
+                                            : "nav-link"
+                                    }
+                                >
+                                    Custom hook
+                                </NavLink>
+                            </li>
                             <li className="nav-item">{renderLogin()}</li>
                         </ul>
                     </div>

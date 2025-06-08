@@ -47,6 +47,7 @@ import UserManagementRQ from "./pages/ReactQueryDemo/UserManagementRQ";
 import UseRefDemo from "./pages/HookToiUuRender/UseRefDemo";
 import UseMemoDemo from "./pages/HookToiUuRender/UseMemoDemo";
 import UseCallBackDemo from "./pages/HookToiUuRender/UseCallBackDemo";
+import DemoCustomHook from "./pages/DemoCustomHook/DemoCustomHook";
 
 // tương tự store của redux
 const queryClient = new QueryClient();
@@ -148,6 +149,10 @@ function App() {
                             <Route
                                 path="useCallBack"
                                 element={<UseCallBackDemo />}
+                            />
+                            <Route
+                                path="custom-hook"
+                                element={<DemoCustomHook />}
                             />
                         </Route>
 
